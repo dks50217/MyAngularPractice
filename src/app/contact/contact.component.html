@@ -1,0 +1,7 @@
+<p>
+  contact works!
+</p>
+
+<p>{{Message}}</p>
+<p [innerHTML]="Message"></p>
+<app-child [parentData]="Message" (result)="saveData($event)"></app-child>{{count}}

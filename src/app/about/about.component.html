@@ -1,0 +1,59 @@
+
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-3">
+            <div class="list-group">
+                    <a routerLink="overview" class="list-group-item list-group-item-action active">
+                      overview
+                    </a>
+                    <a routerLink="organization" class="list-group-item list-group-item-action">Organization</a>
+                    <a  routerLink="departments" class="list-group-item list-group-item-action">Departments</a>
+
+                  </div>
+    </div>
+    <div class="col-9">
+      <!--ngIf應用-->
+      <button (click)="isShow=!isShow">{{isShow}}</button>
+      <p *ngIf="isShow;else elseBlock">
+        isShow為true，會看到這段文字
+      </p>
+      <ng-template #elseBlock>
+        <p> isShow為false，會看到這段文字</p>
+      </ng-template>
+
+      <select [(ngModel)]="StartCountry">
+        <option *ngFor="let _country of Countries">{{_country}}</option>
+      </select>
+      <div [ngSwitch]="StartCountry">
+        <p *ngSwitchCase="'TW'">台灣</p>
+        <p *ngSwitchCase="'JP'">日本</p>
+        <p *ngSwitchCase="'US'">美國</p>
+        <p *ngSwitchCase="'CN'">中國</p>
+        <p *ngSwitchCase="'Kor'">韓國</p>
+        <p *ngSwitchDefault>沒有此國家</p>
+      </div>
+
+      <p>{{date|date:'yyyy/MM/dd'}}</p>
+      <table class="table table border">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>姓名</th>
+            <th>年齡</th>
+            <th>性別</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let _user of users;let isEven=even;let isOdd=odd;let i=index"
+              [ngClass]="{even:isEven,odd:isOdd}"
+          >
+            <td>{{i}}</td>
+            <td>{{_user.name}}</td>
+            <td>{{_user.age}}</td>
+            <td>{{_user.sex}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <router-outlet></router-outlet>
+    </div>
+</div>

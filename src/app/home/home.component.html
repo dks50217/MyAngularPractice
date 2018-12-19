@@ -1,0 +1,26 @@
+<h2>{{ title }}</h2>
+<p>{{user?.noexist}}</p>
+<p>{{user.name}}</p>
+<p>{{user.age}}</p>
+<p>{{user.sex}}</p>
+<img src="../../assets/images/tenor.gif">
+<img src="{{'../../assets/images/'+ sim}}">
+<p>{{(flag)?"true":"false"}}</p>
+<p>{{getvalue()}}</p>
+
+<h3 class="s1 s2">Ng classDEMO</h3>
+<h1 [ngClass]="'s1 s2'">Ng classDEMO</h1>
+<h1 [ngClass]="{s1:true,s2:true}">Ng classDEMO</h1>
+
+<button [disabled]="flag">彈性按鈕</button>
+
+<hr>
+<h1>Event Binding:</h1>
+<input type="text" [value]="message" (input)="SetMessage($event.target.value)">
+<span>{{message}}</span>
+<hr>
+<button (click)="alertClick($event)">按鈕綁定</button>
+<hr>
+<!--Two way binding-->
+<input [(ngModel)]="username">
+<span>{{username}}</span>
